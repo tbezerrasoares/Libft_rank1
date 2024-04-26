@@ -31,8 +31,10 @@ OBJS = ${SRCS:.c=.o}
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -I$(HEADER) -c $(SRCS)
 	ar rcs $(NAME) $(OBJS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -I$(HEADER) -c $(SRCS)
 
 clean:
 	$(RM) $(OBJS)
